@@ -9,3 +9,6 @@ Pages
 Styles
 - CssSelector
 - CssSetting
+
+Admin
+- BadRacketAdminBase
