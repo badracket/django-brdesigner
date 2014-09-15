@@ -13,14 +13,17 @@ Reusable components that help make building a customizable and extendable Django
 ###Styles
 - **models.CssSelector**: Css selector including a list of CssSetting
 - **models.CssSetting**: Css setting
-
-
+- **models.CssFileLoad**: Css files to load in HTML head
 
 ###Templates
 - **templates/brdesigner/base.djhtml**: Template with some basic HTML structure leveraging other brdesigner concepts
 
 ###App Js
 - **static/brdesigner/js/core_br.js**: Instantiates common app js vars
+- **models.JsFileLoad**: Javascript files to load in HTML head
+
+###Branding
+- **models.Brand**: Branding info (e.g. logos, favico)
 
 ###Admin
 - **admin.BadRacketAdminBase**: Sets up common admin features (e.g. sortable js and textareas)

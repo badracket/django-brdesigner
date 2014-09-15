@@ -1,0 +1,58 @@
+% load static %}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html lang="en">
+  <head>
+  	<title>{{ page.title }}</title>
+  	<meta name="description" content="{{ page.meta_description }}" />
+    <meta name="keywords" content="{{ page.meta_keywords }}" />
+
+    <link rel="shortcut icon" href="{{ brand_images.favicon.url }}">
+
+    {% for css_file_load in css_file_load_list %}
+    <script type='text/javascript' src="{% if css_file_load.is_local %}{% get_static_prefix %}{% endif %}{{ css_file_load.path }}"></script>
+    {% endfor %}
+
+    {% for js_file_load in js_file_load_list %}
+    <script type='text/javascript' src="{% if js_file_load.is_local %}{% get_static_prefix %}{% endif %}{{ js_file_load.path }}"></script>
+    {% endfor %}
+
+    <script type='text/javascript' src="{% get_static_prefix %}brdesigner/js/core_br.js"></script>
+
+    <script type='text/javascript' src="http://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', '{{ google_analytics.account_id }}']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    {% block head %}{% endblock %}
+
+  </head>
+  <body>
+    {% block body %}{% endblock %}
+    <style>
+      {% for selector in css_selector_list %}
+      {% if selector.csssetting_set.all|length > 0%}
+      {{selector.selector}} {
+        {% for setting in selector.csssetting_set.all %}
+        {{ setting.property }}: {{ setting.value }};
+        {% endfor %}
+      }
+      {% endif %}
+      {% endfor %}
+    </style>
+    <script type='text/javascript'>
+      options.root_url         = "{{ root_url }}";
+      {% if options.is_mobile_device %}
+      options.is_mobile_device = true;
+      {% else %}
+      options.is_mobile_device = false;
+      {% endif %};
+    </script>
+
+  </body>
+</html>

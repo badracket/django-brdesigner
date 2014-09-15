@@ -53,6 +53,22 @@ class MenuItem(SortableModel):
     def __unicode__(self):
         return '%s' % (self.display_name)
 
+class BrandImages(models.Model):
+    name             = models.CharField(max_length=50)
+    logo_big         = models.ImageField(upload_to='brdesigner/brandimages', max_length=200, blank=True, null=True)
+    logo_small       = models.ImageField(upload_to='brdesigner/brandimages', max_length=200, blank=True, null=True)
+    favicon          = models.ImageField(upload_to='brdesigner/brandimages', max_length=200, blank=True, null=True)
+    is_active        = models.BooleanField()
+
+class JsFileLoad(SortableModel):
+    path             = models.CharField(max_length=300)
+    is_local         = models.BooleanField()
+    is_active        = models.BooleanField()
+
+class CssFileLoad(SortableModel):
+    path             = models.CharField(max_length=300)
+    is_local         = models.BooleanField()
+    is_active        = models.BooleanField()
 
 class CssSelector(models.Model):
     selector         = models.CharField(max_length=100)
@@ -67,3 +83,6 @@ class CssSetting(models.Model):
 
     def __unicode__(self):
         return '%s: %s' % (self.property, self.value)
+
+class GoogleAnalytics(models.Model):
+    account_id       = models.CharField(max_length=100)
