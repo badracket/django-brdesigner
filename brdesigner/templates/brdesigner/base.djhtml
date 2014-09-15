@@ -1,9 +1,9 @@
-% load static %}
+{% load static %}
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
 <html lang="en">
   <head>
-  	<title>{{ page.title }}</title>
-  	<meta name="description" content="{{ page.meta_description }}" />
+    <title>{{ page.title }}</title>
+    <meta name="description" content="{{ page.meta_description }}" />
     <meta name="keywords" content="{{ page.meta_keywords }}" />
 
     <link rel="shortcut icon" href="{{ brand_images.favicon.url }}">
